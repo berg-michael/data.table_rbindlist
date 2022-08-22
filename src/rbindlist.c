@@ -16,6 +16,9 @@ if (fill && usenames!=TRUE) {
     if (usenames==FALSE) warning(_("use.names= cannot be FALSE when fill is TRUE. Setting use.names=TRUE.")); // else no warning if usenames==NA (default)
     usenames=TRUE;
   }
+  if (fill && usenames==NA_LOGICAL) {
+    usenames=TRUE;
+  }
   const bool idcol = !isNull(idcolArg);
   if (idcol && (!isString(idcolArg) || LENGTH(idcolArg)!=1)) error(_("Internal error: rbindlist.c idcol is not a single string"));  // # nocov
   int ncol=0, first=0;
